@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>初級文員電腦技能與文字輸入測試</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft JhengHei", "PingFang SC", sans-serif;
+      background: #f1f5f9;
+      margin: 0;
+      padding: 24px 16px;
+      color: #1e293b;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 36px 32px;
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    }
+    h1 {
+      color: #0f172a;
+      font-size: 24px;
+      margin-top: 0;
+      margin-bottom: 8px;
+      border-bottom: 2px solid #2563eb;
+      padding-bottom: 12px;
+    }
+    h2 {
+      color: #1e40af;
+      font-size: 18px;
+      margin-top: 0;
+      margin-bottom: 16px;
+    }
+    .section {
+      margin-bottom: 30px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    input[type="text"], input[type="email"], input[type="tel"], textarea, select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, textarea:focus, select:focus {
+      border-color: #2563eb;
+    }
+    .sample-box {
+      background: #f8fafc;
+      border: 1px dashed #94a3b8;
+      padding: 14px 16px;
+      border-radius: 4px;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 12px;
+      color: #334155;
+      /* 禁止選取反藍與複製 */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    .timer-badge {
+      display: inline-block;
+      background: #fee2e2;
+      color: #b91c1c;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+    .btn {
+      background: #2563eb;
+      color: #ffffff;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: 600;
+      width: 100%;
+      transition: background 0.2s;
+    }
+    .btn:hover {
+      background: #1d4ed8;
+    }
+    .btn:disabled {
+      background: #94a3b8;
+      cursor: not-allowed;
+    }
+    .notice {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 20px;
+    }
+    /* ===== Word / Excel 線上實操模擬 ===== */
+    .progress-badge {
+      display: inline-block;
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+    .sub-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 22px 0 10px;
+    }
+    .hint {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .word-doc {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      padding: 20px 24px;
+      min-height: 170px;
+      line-height: 1.9;
+      color: #1e293b;
+      margin-bottom: 12px;
+    }
+    .word-doc p { margin: 0 0 6px; }
+    .word-doc .signoff { margin-top: 4px; }
+    .align-bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .align-bar > span { font-size: 13px; color: #475569; font-weight: 600; }
+    .align-group { margin-bottom: 14px; }
+    .align-label { font-size: 13px; color: #475569; font-weight: 600; margin-bottom: 6px; }
+    .mini-btn {
+      padding: 8px 14px;
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      color: #334155;
+      transition: all 0.15s;
+    }
+    .mini-btn:hover { background: #eef2ff; border-color: #2563eb; color: #1d4ed8; }
+    .mini-btn.active { background: #2563eb; border-color: #2563eb; color: #fff; }
+    .format-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .excel-grid {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+    .excel-grid th, .excel-grid td {
+      border: 1px solid #cbd5e1;
+      padding: 8px 10px;
+      text-align: right;
+    }
+    .excel-grid .rownum { background: #f1f5f9; color: #94a3b8; font-weight: 700; text-align: center; width: 36px; }
+    .excel-grid th { background: #e2e8f0; color: #0f172a; font-weight: 700; }
+    .excel-grid td:first-child, .excel-grid th:first-child { text-align: left; }
+    .excel-grid .data { background: #f8fafc; color: #475569; font-weight: 600; }
+    .excel-grid .total-row td { background: #eef2ff; font-weight: 700; }
+    .excel-grid input.cell-input {
+      width: 100%;
+      padding: 6px 8px;
+      border: 1px solid #93c5fd;
+      border-radius: 3px;
+      text-align: right;
+      font-size: 13px;
+      box-sizing: border-box;
+    }
+    .excel-grid input.cell-input:focus { border-color: #2563eb; outline: none; }
+    .cur-sign { display: none; color: #047857; font-weight: 700; margin-right: 2px; }
+    .currency .cur-sign { display: inline; }
+    .preview-line {
+      font-size: 12px;
+      color: #64748b;
+      margin-top: 6px;
+      line-height: 1.6;
+    }
+    .ok-tag { color: #059669; font-weight: 700; }
+    .bad-tag { color: #dc2626; font-weight: 700; }
+    .btn-finish {
+      background: #f1f5f9;
+      color: #1e40af;
+      border: 1px solid #cbd5e1;
+      padding: 10px 18px;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: 600;
+      margin-top: 12px;
+      transition: background 0.2s;
+    }
+    .btn-finish:hover { background: #e2e8f0; }
+    .btn-finish:disabled {
+      background: #f8fafc;
+      color: #94a3b8;
+      cursor: not-allowed;
+      border-color: #e2e8f0;
+    }
+    .typing-result {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 6px;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #065f46;
+      display: none;
+    }
+    .typing-result.show { display: block; }
+    .typing-result .big {
+      font-size: 20px;
+      font-weight: 700;
+      margin-right: 6px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>初級文員電腦技能與文字輸入測試</h1>
+  <p class="notice">本測驗包含：個人基本資料登記、文字輸入速度測試（中/英）以及 Word/Excel 實務考核。請親手輸入，系統已啟用作弊監控機制。</p>
+
+  <form id="quizForm">
+    <!-- 第一部分：個人資料登記 -->
+    <div class="section">
+      <h2>一、 候選人資料</h2>
+      <div class="form-group">
+        <label for="candName">中文姓名 *</label>
+        <input type="text" id="candName" required placeholder="例：LEE Ho Wai">
+      </div>
+      <div class="form-group">
+        <label for="candPhone">聯絡電話 *</label>
+        <input type="tel" id="candPhone" required placeholder="例：91234567">
+      </div>
+      <div class="form-group">
+        <label for="candEmail">電子郵箱 *</label>
+        <input type="email" id="candEmail" required placeholder="例：candidate@example.com">
+      </div>
+    </div>
+
+    <!-- 第二部分：中文打字測試 -->
+    <div class="section">
+      <h2>二、 中文打字測驗（限時 3 分鐘）</h2>
+      <div class="timer-badge" id="zhTimer">剩餘時間：03:00</div>
+      <div class="sample-box" id="zhSample">
+        辦公室內部通知：2026年度中秋節提早下班安排。各位同事：為慶祝中秋佳節，公司將於2026年9月25日（星期五）作出特別工作安排。當日辦公時間將提早於下午4時正結束。各部門請確保於離開前關閉所有電腦設備及電源。緊急聯絡電話請致電接待處內線：8888。祝大家中秋節快樂！
+      </div>
+      <textarea 
+        id="zhInput" 
+        rows="4" 
+        placeholder="點擊此處並親手輸入上方文字（系統將自動啟動計時，嚴禁貼上或拖曳）..."
+        onpaste="return false;" 
+        ondrop="return false;" 
+        autocomplete="off"
+        autocorrect="off"
+        spellcheck="false"></textarea>
+      <div class="typing-actions">
+        <button type="button" class="btn-finish" id="zhFinishBtn">完成中文打字（停止計時）</button>
+      </div>
+      <div class="typing-result" id="zhResult"></div>
+    </div>
+
+    <!-- 第三部分：英文打字測試 -->
+    <div class="section">
+      <h2>三、 英文打字測驗（限時 3 分鐘）</h2>
+      <div class="timer-badge" id="enTimer">剩餘時間：03:00</div>
+      <div class="sample-box" id="enSample">
+        Office Internal Notice: Early Release Arrangement for Mid-Autumn Festival 2026. Dear colleagues, please be informed that office hours will end early at 4:00 PM on Friday, 25 September 2026. Please make sure all computer equipment and power switches are switched off before leaving. Emergency contact extension: 8888. Wishing you all a Happy Mid-Autumn Festival!
+      </div>
+      <textarea 
+        id="enInput" 
+        rows="4" 
+        placeholder="Click here to type the English text above (Paste and drag are disabled)..."
+        onpaste="return false;" 
+        ondrop="return false;" 
+        autocomplete="off"
+        autocorrect="off"
+        spellcheck="false"></textarea>
+      <div class="typing-actions">
+        <button type="button" class="btn-finish" id="enFinishBtn">完成英文打字（停止計時）</button>
+      </div>
+      <div class="typing-result" id="enResult"></div>
+    </div>
+
+    <!-- 第四部分：Word & Excel 線上實操 -->
+    <div class="section">
+      <h2>四、 Word & Excel 線上實操考核</h2>
+      <div class="progress-badge" id="handsOnBadge">實操完成度：0 / 8</div>
+
+      <!-- 4.1 Word 實操 -->
+      <div class="sub-title">4.1 [Word] 落款對齊實作</div>
+      <p class="hint">下方為一份內部通知草稿，請將最後兩行落款「行政部 啟」及「2026年9月15日」設為<strong>靠右對齊</strong>。點擊下方對齊按鈕即可操作。</p>
+      <div class="word-doc" id="wordDoc">
+        <p><strong>內部通知</strong></p>
+        <p>茲因業務需要，行政部訂於下週一進行辦公室設備盤點，請各同事配合辦理。</p>
+        <p class="signoff" id="signoff1">行政部 啟</p>
+        <p class="signoff" id="signoff2">2026年9月15日</p>
+      </div>
+      <div class="align-group">
+        <div class="align-label">「行政部 啟」對齊方式：</div>
+        <div class="align-bar" data-line="signoff1">
+          <button type="button" class="mini-btn" data-align="left">靠左</button>
+          <button type="button" class="mini-btn" data-align="center">置中</button>
+          <button type="button" class="mini-btn" data-align="right">靠右</button>
+          <button type="button" class="mini-btn" data-align="justify">分散</button>
+        </div>
+      </div>
+      <div class="align-group">
+        <div class="align-label">「2026年9月15日」對齊方式：</div>
+        <div class="align-bar" data-line="signoff2">
+          <button type="button" class="mini-btn" data-align="left">靠左</button>
+          <button type="button" class="mini-btn" data-align="center">置中</button>
+          <button type="button" class="mini-btn" data-align="right">靠右</button>
+          <button type="button" class="mini-btn" data-align="justify">分散</button>
+        </div>
+      </div>
+
+      <!-- 4.2 Excel 實操 -->
+      <div class="sub-title">4.2 [Excel] 採購記錄表實作</div>
+      <p class="hint">下表為採購記錄，請在「小計 (E)」欄位為每行填入計算公式（小計＝單價×數量），並在 E9 填入總計公式；最後將「單價」與「小計」兩欄設為貨幣格式（點擊下方按鈕）。</p>
+      <div class="format-bar">
+        <button type="button" class="mini-btn fmt-btn" data-col="C">將「單價」設為貨幣格式 $</button>
+        <button type="button" class="mini-btn fmt-btn" data-col="E">將「小計」設為貨幣格式 $</button>
+      </div>
+      <table class="excel-grid">
+        <thead>
+          <tr><th class="rownum">列</th><th>項目</th><th>單價 (C)</th><th>數量 (D)</th><th>小計 (E)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="rownum">4</td><td>文具用品</td><td class="data" data-col="C"><span class="cur-sign">$</span>12.5</td><td class="data">10</td><td data-col="E"><span class="cur-sign">$</span><input class="cell-input" id="cell-E4" placeholder="輸入小計公式"></td></tr>
+          <tr><td class="rownum">5</td><td>打印紙</td><td class="data" data-col="C"><span class="cur-sign">$</span>8</td><td class="data">20</td><td data-col="E"><span class="cur-sign">$</span><input class="cell-input" id="cell-E5" placeholder="輸入小計公式"></td></tr>
+          <tr><td class="rownum">6</td><td>辦公椅</td><td class="data" data-col="C"><span class="cur-sign">$</span>25</td><td class="data">4</td><td data-col="E"><span class="cur-sign">$</span><input class="cell-input" id="cell-E6" placeholder="輸入小計公式"></td></tr>
+          <tr><td class="rownum">7</td><td>檔案夾</td><td class="data" data-col="C"><span class="cur-sign">$</span>15.5</td><td class="data">6</td><td data-col="E"><span class="cur-sign">$</span><input class="cell-input" id="cell-E7" placeholder="輸入小計公式"></td></tr>
+          <tr><td class="rownum">8</td><td>訂書機</td><td class="data" data-col="C"><span class="cur-sign">$</span>3.2</td><td class="data">25</td><td data-col="E"><span class="cur-sign">$</span><input class="cell-input" id="cell-E8" placeholder="輸入小計公式"></td></tr>
+          <tr class="total-row"><td class="rownum">9</td><td>總計</td><td></td><td></td><td data-col="E"><span class="cur-sign">$</span><input class="cell-input" id="cell-E9" placeholder="輸入總計公式"></td></tr>
+        </tbody>
+      </table>
+      <div class="preview-line" id="excelPreview"></div>
+    </div>
+
+    <button type="submit" class="btn" id="submitBtn">完成並提交測試結果</button>
+  </form>
+</div>
+
+<script>
+  // 你的 Formspree 專屬提交鏈接
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/myeebvln";
+
+  // 1. 防作弊：禁止範本文字右鍵選單與複製
+  const sampleBoxes = [document.getElementById('zhSample'), document.getElementById('enSample')];
+  sampleBoxes.forEach(box => {
+    box.addEventListener('contextmenu', e => e.preventDefault());
+    box.addEventListener('copy', e => {
+      e.preventDefault();
+      alert('【系統提示】測驗範本嚴禁複製！請親手輸入。');
+    });
+  });
+
+  // 2. 防作弊：輸入框禁止貼上、拖曳及異常字符突增
+  const textInputs = [
+    { el: document.getElementById('zhInput'), lastLen: 0 },
+    { el: document.getElementById('enInput'), lastLen: 0 }
+  ];
+
+  textInputs.forEach(item => {
+    let composing = false; // 追蹤中文/日文等輸入法組字狀態
+
+    // 組字開始：暫停異常檢測，避免整詞/整句上屏被誤判為作弊
+    item.el.addEventListener('compositionstart', () => { composing = true; });
+    // 組字結束：整批字符已合法上屏，重置基準長度，避免單次跳增被攔截
+    item.el.addEventListener('compositionend', () => {
+      composing = false;
+      item.lastLen = item.el.value.length;
+    });
+
+    item.el.addEventListener('paste', e => {
+      e.preventDefault();
+      alert('【系統提示】本測驗嚴禁複製貼上，請親手輸入文字！');
+      return false;
+    });
+
+    item.el.addEventListener('drop', e => {
+      e.preventDefault();
+      alert('【系統提示】禁止將文字拖曳進輸入框！');
+      return false;
+    });
+
+    // 異常大批量輸入檢測（單次增長超過 15 字符，組字期間跳過）
+    item.el.addEventListener('input', function() {
+      if (composing) return; // IME 組字期間不檢查，防止合法中文上屏被誤刪
+      const curLen = this.value.length;
+      if (curLen - item.lastLen > 15) {
+        alert('【系統警告】檢測到異常大批量文字注入，該次輸入已被清除！');
+        this.value = '';
+        item.lastLen = 0;
+        return;
+      }
+      item.lastLen = curLen;
+    });
+  });
+
+  // 3 & 4. 打字計時器 + 完成即停邏輯（參考 10fastfingers：開始即計、完成即停、即時結算）
+  let zhStart = null, zhTimer = null, zhSeconds = 180, zhDone = false, zhFinishAt = null;
+  let enStart = null, enTimer = null, enSeconds = 180, enDone = false, enFinishAt = null;
+
+  const zhInput = document.getElementById('zhInput');
+  const enInput = document.getElementById('enInput');
+
+  function startTimer(lang) {
+    if (lang === 'zh' && !zhStart) {
+      zhStart = new Date();
+      zhTimer = setInterval(() => {
+        zhSeconds--;
+        const m = Math.floor(zhSeconds / 60), s = zhSeconds % 60;
+        document.getElementById('zhTimer').innerText = `剩餘時間：0${m}:${s < 10 ? '0' : ''}${s}`;
+        if (zhSeconds <= 0) { clearInterval(zhTimer); finishTyping('zh', true); }
+      }, 1000);
+    }
+    if (lang === 'en' && !enStart) {
+      enStart = new Date();
+      enTimer = setInterval(() => {
+        enSeconds--;
+        const m = Math.floor(enSeconds / 60), s = enSeconds % 60;
+        document.getElementById('enTimer').innerText = `剩餘時間：0${m}:${s < 10 ? '0' : ''}${s}`;
+        if (enSeconds <= 0) { clearInterval(enTimer); finishTyping('en', true); }
+      }, 1000);
+    }
+  }
+  zhInput.addEventListener('focus', () => startTimer('zh'));
+  enInput.addEventListener('focus', () => startTimer('en'));
+
+  // 編輯距離（Levenshtein）相似度 —— 用於中文逐字準確率
+  function lev(a, b) {
+    a = a || ''; b = b || '';
+    const m = a.length, n = b.length;
+    if (!m) return n; if (!n) return m;
+    let prev = new Array(n + 1);
+    for (let j = 0; j <= n; j++) prev[j] = j;
+    for (let i = 1; i <= m; i++) {
+      const cur = [i];
+      for (let j = 1; j <= n; j++) {
+        const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+        cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + cost);
+      }
+      prev = cur;
+    }
+    return prev[n];
+  }
+  function charSimilarity(typed, target) {
+    target = target || '';
+    if (!target.length) return 0;
+    const dist = lev(typed, target);
+    return Math.max(0, 1 - dist / Math.max(typed.length, target.length));
+  }
+  // 英文逐詞準確率（按順序比對，大小寫不敏感）
+  function wordAccuracy(typed, target) {
+    const t = (typed || '').trim().toLowerCase().split(/\s+/).filter(Boolean);
+    const s = (target || '').trim().toLowerCase().split(/\s+/).filter(Boolean);
+    if (!s.length) return 0;
+    let hit = 0;
+    const n = Math.min(t.length, s.length);
+    for (let i = 0; i < n; i++) if (t[i] === s[i]) hit++;
+    return hit / s.length;
+  }
+
+  function computeTyping(lang) {
+    const isZh = lang === 'zh';
+    const input = isZh ? zhInput : enInput;
+    const start = isZh ? zhStart : enStart;
+    const finishAt = isZh ? zhFinishAt : enFinishAt;
+    const text = input.value.trim();
+    const end = finishAt || new Date();
+    const elapsedMin = start ? Math.max((end - start) / 60000, 0.1) : 1;
+    const sampleEl = document.getElementById(isZh ? 'zhSample' : 'enSample');
+    const sample = sampleEl ? sampleEl.textContent.trim() : '';
+    let speed, count, accuracy;
+    if (isZh) {
+      count = text.length;
+      speed = Math.round(count / elapsedMin);          // 中文字/分 (CPM)
+      accuracy = charSimilarity(text, sample);
+    } else {
+      count = text.length ? text.split(/\s+/).filter(w => w.length > 0).length : 0;
+      speed = Math.round(count / elapsedMin);          // 英文詞/分 (WPM)
+      accuracy = wordAccuracy(text, sample);
+    }
+    const elapsedSec = start ? Math.round((end - start) / 1000) : 0;
+    return { speed, accuracy, count, elapsedSec };
+  }
+
+  function finishTyping(lang, auto) {
+    const isZh = lang === 'zh';
+    const start = isZh ? zhStart : enStart;
+    if (!start) { alert('請先點擊輸入框開始打字，系統才會啟動計時。'); return; }
+    if (isZh ? zhDone : enDone) return;
+    if (isZh) { clearInterval(zhTimer); zhInput.disabled = true; zhDone = true; zhFinishAt = new Date(); }
+    else { clearInterval(enTimer); enInput.disabled = true; enDone = true; enFinishAt = new Date(); }
+
+    const r = computeTyping(lang);
+    const accPct = Math.round(r.accuracy * 100);
+    const mm = Math.floor(r.elapsedSec / 60), ss = r.elapsedSec % 60;
+    const resultEl = document.getElementById(isZh ? 'zhResult' : 'enResult');
+    const unit = isZh ? 'CPM' : 'WPM';
+    const label = isZh ? '字' : '詞';
+    resultEl.innerHTML =
+      `<span class="big">${r.speed} ${unit}</span>` +
+      `準確率 <strong>${accPct}%</strong> ｜ 共 ${r.count} ${label} ｜ 耗時 ${mm}分${ss}秒` +
+      (auto ? ` <span style="color:#b91c1c;">（時間到自動結算）</span>` : ` <span style="color:#059669;">（已停止計時）</span>`);
+    resultEl.classList.add('show');
+
+    const btn = document.getElementById(isZh ? 'zhFinishBtn' : 'enFinishBtn');
+    btn.disabled = true;
+    btn.innerText = '已完成打字';
+    document.getElementById(isZh ? 'zhTimer' : 'enTimer').innerText = auto ? '時間到（已結算）' : '已完成（已停止計時）';
+  }
+
+  document.getElementById('zhFinishBtn').addEventListener('click', () => finishTyping('zh', false));
+  document.getElementById('enFinishBtn').addEventListener('click', () => finishTyping('en', false));
+
+  // 5. 計算打字速度（供提交用，優先採用「完成即停」的結算結果，避免把後續填表時間算進打字耗時）
+  function calculateTypingScores() {
+    const zh = computeTyping('zh');
+    const en = computeTyping('en');
+    return {
+      zhCPM: zh.speed, zhAcc: Math.round(zh.accuracy * 100), zhChars: zh.count, zhElapsed: zh.elapsedSec,
+      enWPM: en.speed, enAcc: Math.round(en.accuracy * 100), enWords: en.count, enElapsed: en.elapsedSec
+    };
+  }
+
+  // 6. Word / Excel 線上實操：互動邏輯與評分
+  const cellData = {
+    'C4': 12.5, 'D4': 10, 'C5': 8, 'D5': 20, 'C6': 25, 'D6': 4,
+    'C7': 15.5, 'D7': 6, 'C8': 3.2, 'D8': 25
+  };
+  const lineAlign = { signoff1: null, signoff2: null };
+  const currencyCols = new Set();
+
+  function colToNum(col) {
+    let n = 0;
+    for (const ch of col) n = n * 26 + (ch.charCodeAt(0) - 64);
+    return n;
+  }
+  function numToCol(n) {
+    let s = '';
+    while (n > 0) { const r = (n - 1) % 26; s = String.fromCharCode(65 + r) + s; n = Math.floor((n - 1) / 26); }
+    return s;
+  }
+  function getCellValue(ref, seen) {
+    ref = ref.toUpperCase();
+    seen = seen || new Set();
+    if (seen.has(ref)) return null; // 循環引用保護（如 E4 內寫 =E4）
+    seen.add(ref);
+    if (ref in cellData) { seen.delete(ref); return cellData[ref]; }
+    const input = document.getElementById('cell-' + ref);
+    if (!input) { seen.delete(ref); return null; }
+    const formula = (input.value || '').trim();
+    if (!formula) { seen.delete(ref); return null; }
+    const v = evalFormula(formula, (r) => getCellValue(r, seen));
+    seen.delete(ref);
+    return v;
+  }
+  // 從公式中抽取被引用的儲存格集合（會展開 A1:B3 這類範圍）
+  function expandRefs(formula) {
+    const refs = new Set();
+    const rangeRe = /([A-Z]+\d+):([A-Z]+\d+)/g;
+    let m;
+    while ((m = rangeRe.exec(formula)) !== null) {
+      const c1 = colToNum(m[1].replace(/\d+$/, '')), r1 = parseInt(m[1].match(/\d+$/)[0], 10);
+      const c2 = colToNum(m[2].replace(/\d+$/, '')), r2 = parseInt(m[2].match(/\d+$/)[0], 10);
+      const cmax = Math.max(c1, c2), cmin = Math.min(c1, c2);
+      const rmax = Math.max(r1, r2), rmin = Math.min(r1, r2);
+      for (let c = cmin; c <= cmax; c++)
+        for (let r = rmin; r <= rmax; r++) refs.add(numToCol(c) + r);
+    }
+    const singleRe = /([A-Z]+\d+)/g;
+    while ((m = singleRe.exec(formula)) !== null) refs.add(m[1].toUpperCase());
+    return refs;
+  }
+  function expandRangeToList(a, b) {
+    const c1 = colToNum(a.replace(/\d+$/, '')), r1 = parseInt(a.match(/\d+$/)[0], 10);
+    const c2 = colToNum(b.replace(/\d+$/, '')), r2 = parseInt(b.match(/\d+$/)[0], 10);
+    const list = [];
+    for (let c = Math.min(c1, c2); c <= Math.max(c1, c2); c++)
+      for (let r = Math.min(r1, r2); r <= Math.max(r1, r2); r++)
+        list.push(numToCol(c) + r);
+    return list;
+  }
+  function evalFormula(formula, resolver) {
+    let s = formula.trim().replace(/^=/, '');
+    if (!s) return null;
+    s = s.toUpperCase();
+    // 階段 A：將 SUM/PRODUCT/AVERAGE 的「範圍引數 A1:B3」展開為單元格清單 A1,A2,...,B3
+    s = s.replace(/\b(SUM|PRODUCT|AVERAGE)\s*\(\s*([A-Z]+\d+)\s*:\s*([A-Z]+\d+)\s*\)/g,
+      (m, fn, a, b) => fn + '(' + expandRangeToList(a, b).join(',') + ')');
+    // 階段 B：將單元格參照替換為其數值（以括號包住，避免拼接錯位）
+    s = s.replace(/([A-Z]+\d+)/g, (m) => {
+      const v = resolver(m);
+      return (typeof v === 'number') ? '(' + v + ')' : '(0)';
+    });
+    try {
+      const helpers =
+        'const SUM=(...a)=>a.reduce((x,y)=>x+(Number(y)||0),0);' +
+        'const PRODUCT=(...a)=>a.reduce((x,y)=>x*(Number(y)||0),1);' +
+        'const AVERAGE=(...a)=>a.length?SUM(...a)/a.length:0;';
+      const val = Function(helpers + '"use strict";return (' + s + ');')();
+      return (typeof val === 'number' && isFinite(val)) ? val : null;
+    } catch (e) { return null; }
+  }
+
+  // Word 落款對齊按鈕（每行獨立設定，測試候選人是否理解兩行皆需靠右）
+  document.querySelectorAll('.align-bar[data-line]').forEach(bar => {
+    const lineId = bar.dataset.line;
+    bar.querySelectorAll('.mini-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        lineAlign[lineId] = btn.dataset.align;
+        bar.querySelectorAll('.mini-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(lineId).style.textAlign = btn.dataset.align;
+        updateHandsOn();
+      });
+    });
+  });
+
+  // Excel 貨幣格式按鈕（可反選：再點一次取消）
+  document.querySelectorAll('.fmt-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const col = btn.dataset.col;
+      if (currencyCols.has(col)) {
+        currencyCols.delete(col);
+        btn.classList.remove('active');
+        document.querySelectorAll('[data-col="' + col + '"]').forEach(td => td.classList.remove('currency'));
+      } else {
+        currencyCols.add(col);
+        btn.classList.add('active');
+        document.querySelectorAll('[data-col="' + col + '"]').forEach(td => td.classList.add('currency'));
+      }
+      updateHandsOn();
+    });
+  });
+
+  // Excel 公式輸入即時評分
+  ['E4', 'E5', 'E6', 'E7', 'E8', 'E9'].forEach(ref => {
+    const input = document.getElementById('cell-' + ref);
+    if (input) input.addEventListener('input', updateHandsOn);
+  });
+
+  function gradeHandsOn() {
+    let correct = 0;
+    const parts = [];
+    // Word 落款靠右（兩行皆須獨立設為靠右）
+    const wordOk = lineAlign.signoff1 === 'right' && lineAlign.signoff2 === 'right';
+    parts.push({ name: 'Word 落款靠右對齊', ok: wordOk });
+    if (wordOk) correct++;
+    // Excel 小計 E4-E8：接受任何「引用正確單價(C{r})與數量(D{r})且算出正確乘積」的公式
+    for (let r = 4; r <= 8; r++) {
+      const ref = 'E' + r;
+      const input = document.getElementById('cell-' + ref);
+      const formula = (input.value || '').trim().replace(/\s+/g, '').toUpperCase();
+      const refs = expandRefs(formula);
+      const val = getCellValue(ref);
+      const expected = cellData['C' + r] * cellData['D' + r];
+      const refsOk = refs.has('C' + r) && refs.has('D' + r);
+      const valOk = (typeof val === 'number') && Math.abs(val - expected) < 0.01;
+      const ok = refsOk && valOk;
+      parts.push({ name: 'Excel 小計公式 ' + ref, ok });
+      if (ok) correct++;
+    }
+    // Excel 總計 E9：接受任何「涵蓋 E4:E8 全部並算出正確總和」的公式
+    const e9input = document.getElementById('cell-E9');
+    const e9 = (e9input.value || '').trim().replace(/\s+/g, '').toUpperCase();
+    const e9refs = expandRefs(e9);
+    const e9val = getCellValue('E9');
+    let sumExpected = 0;
+    for (let r = 4; r <= 8; r++) sumExpected += cellData['C' + r] * cellData['D' + r];
+    const e9refsOk = ['E4', 'E5', 'E6', 'E7', 'E8'].every(c => e9refs.has(c));
+    const e9valOk = (typeof e9val === 'number') && Math.abs(e9val - sumExpected) < 0.01;
+    const e9ok = e9refsOk && e9valOk;
+    parts.push({ name: 'Excel 總計公式 E9', ok: e9ok });
+    if (e9ok) correct++;
+    // 貨幣格式
+    const curOk = currencyCols.has('C') && currencyCols.has('E');
+    parts.push({ name: 'Excel 貨幣格式（單價 + 小計）', ok: curOk });
+    if (curOk) correct++;
+
+    return { correct, total: 8, parts };
+  }
+
+  function updateHandsOn() {
+    const result = gradeHandsOn();
+    document.getElementById('handsOnBadge').innerText = `實操完成度：${result.correct} / ${result.total}`;
+    const preview = document.getElementById('excelPreview');
+    const lines = ['即時預覽 —'];
+    for (let r = 4; r <= 8; r++) {
+      const v = getCellValue('E' + r);
+      lines.push(`E${r}=${typeof v === 'number' ? v.toFixed(2) : '—'}`);
+    }
+    const e9 = getCellValue('E9');
+    lines.push(`｜E9 總計=${typeof e9 === 'number' ? e9.toFixed(2) : '—'}`);
+    preview.innerText = lines.join('  ');
+  }
+  updateHandsOn();
+
+  // 7. 表單提交邏輯
+  document.getElementById('quizForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.disabled = true;
+    submitBtn.innerText = "正在傳送測驗結果，請稍候...";
+
+    // 停止計時
+    if (zhTimer) clearInterval(zhTimer);
+    if (enTimer) clearInterval(enTimer);
+
+    const typing = calculateTypingScores();
+    const handsOn = gradeHandsOn();
+
+    // 構建投遞給郵箱的數據包
+    const payload = {
+      候選人姓名: document.getElementById('candName').value,
+      聯絡電話: document.getElementById('candPhone').value,
+      電子郵箱: document.getElementById('candEmail').value,
+      中文打字速度: `${typing.zhCPM} CPM（輸入 ${typing.zhChars} 字，準確率 ${typing.zhAcc}%）`,
+      英文打字速度: `${typing.enWPM} WPM（輸入 ${typing.enWords} 詞，準確率 ${typing.enAcc}%）`,
+      Office實操完成度: `${handsOn.correct} / ${handsOn.total} 部分`,
+      實操明細: handsOn.parts.map(p => `${p.ok ? '做對' : '未做對'} ${p.name}`).join('；'),
+      交卷時間: new Date().toLocaleString("zh-HK", { timeZone: "Asia/Hong_Kong" })
+    };
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (response.ok) {
+        document.body.innerHTML = `
+          <div class="container" style="text-align:center; padding: 48px 24px;">
+            <h2 style="color: #059669; font-size: 22px;">測驗已成功提交</h2>
+            <p style="color: #475569; margin-bottom: 24px;">感謝您的參與，測驗數據已直接呈報至招聘負責人郵箱。</p>
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; padding:20px; display:inline-block; text-align:left; min-width:300px;">
+              <p><strong>中文速度：</strong> ${payload.中文打字速度}</p>
+              <p><strong>英文速度：</strong> ${payload.英文打字速度}</p>
+              <p><strong>Office 實操完成度：</strong> ${payload.Office實操完成度}</p>
+              <div style="margin-top:12px; font-size:13px; color:#475569; border-top:1px dashed #cbd5e1; padding-top:12px;">
+                ${handsOn.parts.map(p => `<div style="margin:4px 0;"><span style="color:${p.ok ? '#059669' : '#dc2626'}; font-weight:700;">${p.ok ? '做對' : '未做對'}</span> ${p.name}</div>`).join('')}
+              </div>
+            </div>
+          </div>
+        `;
+      } else {
+        alert("提交失敗，請檢查網絡連線或聯繫面試官。");
+        submitBtn.disabled = false;
+        submitBtn.innerText = "重新提交測試結果";
+      }
+    } catch (err) {
+      alert("提交過程中出現錯誤，請重試。");
+      submitBtn.disabled = false;
+      submitBtn.innerText = "重新提交測試結果";
+    }
+  });
+</script>
+
+</body>
+</html>
